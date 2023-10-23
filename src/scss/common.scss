@@ -1,0 +1,187 @@
+
+.invest-link {
+  @include adaptiveValue("font-size", 158, 118,0,1920,1440);
+  @include adaptiveValue("font-size", 118, 95,3,1440,768);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: toRem(-6.32);
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  @include adaptiveValue("padding-bottom", 5, 3,0,1920,1440);
+  width: fit-content;
+  &::before,
+  &::after {
+    content:'';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    @include adaptiveValue("height", 10, 7,0,1920,1440);
+    transition: all .3s ease;
+  }
+  &::before {
+    width: 100%;
+    background-color: $accent2;
+    z-index: 0;
+  }
+  &::after {
+    width: 0;
+    background-color: $accent;
+    z-index: 1;
+  }
+  @media (any-hover: hover){
+    &:hover{
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.sect-mr {
+  @include adaptiveValue("margin-bottom", 220, 165,0,1920,1440);
+  @include adaptiveValue("margin-bottom", 165, 80,3,1440,375);
+}
+
+.text-gray {
+  color: $gray87;
+  font-family: Manrope;
+  @include adaptiveValue("font-size", 24, 16);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.title-main {
+  @include adaptiveValue("font-size", 180, 135,0,1920,1440);
+  @include adaptiveValue("font-size", 135, 48,3,1440,375);
+  @include adaptiveValue("letter-spacing", -7.2, -1.92);
+  text-transform: uppercase;
+}
+
+.color-acc {
+  color: #EB4EBB;
+}
+.color-acc-2 {
+  color: #C2F732;
+}
+.color-acc-3 {
+  color: #FFFF05;
+}
+.color-acc-4 {
+  color: #5E72EC;
+}
+
+.bg-color-acc {
+  color: #EB4EBB;
+}
+.bg-color-acc-2 {
+  color: #C2F732;
+}
+.bg-color-acc-3 {
+  color: #FFFF05;
+}
+.bg-color-acc-4 {
+  color: #5E72EC;
+}
+
+.swiper-btn {
+  @include adaptiveValue("width", 80, 40);
+  @include adaptiveValue("height", 80, 40);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid $accent;
+  @include adaptiveValue("border-width", 7, 3);
+  background-color: $accent;
+  transition: all .3s ease;
+  svg {
+    @include adaptiveValue("width", 20, 10);
+  }
+  svg path {
+    fill: white;
+    transition: all .3s ease;
+  }
+  @media (any-hover: hover){
+    &:hover{
+      border-color: $accent2;
+      background-color: $accent2;
+      svg path {
+        fill: $mainColor;
+      }
+    }
+  }
+
+  &.swiper-button-prev {
+    svg {
+      transform: scaleX(-1);
+    }
+  }
+  &.swiper-button-next {
+  }
+  &.swiper-button-disabled {
+    border-color: $mainColor;
+    background-color: transparent;
+    svg path {
+      fill: $mainColor;
+    }
+  }
+
+  // .swiper-btn__wrapper
+  &__wrapper {
+    display: flex;
+    gap: toRem(10);
+  }
+}
+
+.swiper-pagination {
+  color: $grayD3;
+  @include adaptiveValue("font-size", 84, 63,0,1920,1440);
+  @include adaptiveValue("font-size", 63, 36,3,1440,375);
+  @include adaptiveValue("letter-spacing", -3.36, -1.44);
+  .pagination-current {
+    color: $mainColor;
+  }
+  .pagination-total {
+  }
+}
+
+.line-why {
+  background-color: $accent4;
+  @include adaptiveValue("padding-top", 18, 11);
+  @include adaptiveValue("padding-bottom", 18, 11);
+  overflow: hidden;
+  width: max-content;
+  // .line-why__list
+  &__list {
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: toRem(180);
+    animation: scroll 40s forwards linear infinite;
+    @media (max-width:$mobile){
+       column-gap: toRem(60); 
+       animation: scroll2 25s forwards linear infinite;
+    }
+  }
+  // .line-why__item
+  &__item {
+    color: white;
+    @include adaptiveValue("font-size", 185, 138,0,1920,1440);
+    @include adaptiveValue("font-size", 138, 48,3,1440,375);
+    @include adaptiveValue("letter-spacing", -7.4, -1.92);
+    text-transform: uppercase;
+    text-wrap: nowrap;
+    margin: 0;
+    padding-inline: 0;
+  }
+}
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 90px));
+  }
+}
+@keyframes scroll2 {
+  to {
+    transform: translate(calc(-50% - 30px));
+  }
+}

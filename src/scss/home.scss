@@ -1,0 +1,528 @@
+.hero {
+
+  // .hero__container
+  &__container {
+    @include adaptiveValue("padding-top", 437,320,0,1920,1440);
+    @include adaptiveValue("padding-top", 320,160,3,1440,480);
+    position: relative;
+    display: flex;
+    column-gap: toRem(20);
+    &::before {
+      @media (min-width:em(1200.98)){
+        content:'';
+        position: absolute;
+        @include adaptiveValue("top", 344, 258,0,1920,1440);
+        left: 20px;
+        width: calc(100% - 40px);
+        height: toRem(1);
+        background-color: hsla(0, 0%, 0%, 0.15);
+      }
+      @media (max-width: em(1200.98)){
+          display: none;
+      }
+    }
+    @media (max-width:$tablet){
+      flex-direction: column;
+    }
+  }
+  // .hero__first
+  &__first {
+    display: flex;
+    @media (min-width:$tablet){
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    @media (max-width:$tablet){
+      margin-bottom: toRem(25);      
+    }
+  }
+  // .hero__txt
+  &__txt {
+    @include adaptiveValue("font-size", 84, 63,0,1920,1440);
+    @include adaptiveValue("font-size", 63, 48,3,1440,375);
+    @include adaptiveValue("letter-spacing", -3.36, -1.92);
+    text-transform: uppercase;
+  }
+  // .hero__future
+  &__future {
+    @media (min-width:$tablet){
+      @include adaptiveValue("width", 130, 100,0,1920,1440);
+      @include adaptiveValue("height", 130, 100,0,1920,1440);
+      border-radius: 50%;
+      background-color: $accent2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @media (max-width:$tablet){
+      display: none;
+    }
+  }
+  // .hero__future-txt
+  &__future-txt {
+    @include adaptiveValue("font-size", 22, 16,0,1920,1440);
+    letter-spacing: -0.66px;
+    text-transform: uppercase;
+  }
+  // .hero__second
+  &__second {
+    @media (max-width:$tablet){
+      margin-bottom: toRem(45);
+    }
+  }
+  // .hero__image
+  &__image {
+    max-width: toRem(925);
+    img {
+      width: 100%;
+      height: auto;
+    }
+    @media (max-width:$tablet){
+      max-width: toRem(700);
+    }
+  }
+  // .hero__third
+  &__third {
+    @media (min-width:$tablet){
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      row-gap: toRem(30);
+    }
+  }
+  // .hero__list
+  &__list {
+  }
+  // .hero__invest
+  &__invest {
+    @media (max-width:$tablet){
+      display: none;
+    }
+  }
+}
+
+.list-hero {
+  @include adaptiveValue("margin-left", 194, 145,0,1920,1440);
+  @include adaptiveValue("margin-left", 145, 0,3,1440,992);
+  // .list-hero__item
+  &__item {
+    display: flex;
+    align-items: center;
+    column-gap: toRem(5);
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 55, 20);
+    }
+    span {
+      display: inline-block;
+    }
+  }
+  // .list-hero__num
+  &__num {
+    color: $grayD3;
+    @include adaptiveValue("font-size", 100, 84);
+    @include adaptiveValue("letter-spacing", -4, -3.3);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg)
+  }
+  // .list-hero__txt
+  &__txt {
+    @include adaptiveValue("font-size", 42, 32,0,1920,1440);
+    @include adaptiveValue("font-size", 32, 28,3,1440,375);
+    line-height: 0.9;
+    @include adaptiveValue("letter-spacing", -1.68, -1.12);
+    text-transform: uppercase;
+  }
+}
+
+// ========= SECTION WHY 02 =============================================================
+// ----------------------------------------------------
+.why {
+
+  // .why__line
+  &__line {
+    @include adaptiveValue("margin-bottom", 138, 100,0,1920,1440);
+    @include adaptiveValue("margin-bottom", 100, 40,3,1920,1440);
+  }
+  // .why__container
+  &__container {
+  }
+  // .why__title
+  &__title {
+    text-align: center;
+    @include adaptiveValue("font-size", 160, 120,0,1920,1440);
+    @include adaptiveValue("font-size", 120, 48,3,1440,375);
+    line-height: 0.85;
+    @include adaptiveValue("letter-spacing", -6.4, -1.92);
+    text-transform: uppercase;
+    max-width: toRem(1545);
+    margin: 0 auto;
+    span {
+      color: $accent;
+    }
+    margin-bottom: toRem(40);
+  }
+  // .why__subtitle
+  &__subtitle {
+    text-align: center;
+    max-width: toRem(560);
+    margin: 0 auto;
+  }
+	// .why__slider-wrap
+	&__slider-wrap {
+    position: relative;
+	}
+  // .why__slider
+  &__slider {
+    @include adaptiveValue("margin-top", 206, 155,0,1920,1440);
+    @include adaptiveValue("margin-top", 155, 60,3,1440,375);
+    @include adaptiveValue("width", 580, 435,0,1920,1440);
+    @include adaptiveValue("width", 435, 335,3,1440,375);
+  }
+  // .why__wrapper
+  &__wrapper {
+    @media (max-width:em(650.98)){
+      margin-bottom: toRem(20);
+    }
+  }
+  // .why__slide
+  &__slide {
+     @include adaptiveValue("width", 580, 435,0,1920,1440);
+    @include adaptiveValue("width", 435, 335,3,1440,375);
+    overflow: hidden;
+  }
+  // .why__item
+  &__item {
+  }
+  	// .why__nav
+	&__nav {
+    position: absolute;
+    left: 0;
+    bottom: toRem(24);
+    pointer-events: none;
+    width: 100%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: em(650.98)){
+        position: relative;
+        bottom: 0;
+    }
+  }
+	// .why__pagination
+	&__pagination {
+	}
+  // .why__btns
+  &__btns {
+    pointer-events: all;
+  }
+}
+
+.item-why {
+  overflow: hidden;
+  border-radius: toRem(10);
+  @include adaptiveValue("padding-top", 70, 50,0,1920,1440);
+  @include adaptiveValue("padding-top", 50, 40,3,1440,375);
+  @include adaptiveValue("padding-bottom", 70, 50,0,1920,1440);
+  @include adaptiveValue("padding-bottom", 50, 40,3,1440,375);
+  @include adaptiveValue("padding-left", 77, 50,0,1920,1440);
+  @include adaptiveValue("padding-left", 50, 30,3,1440,375);
+  @include adaptiveValue("padding-right", 77, 50,0,1920,1440);
+  @include adaptiveValue("padding-right", 50, 30,3,1440,375);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: toRem(30);
+  @include adaptiveValue("min-height", 680, 545,0,1920,1440);
+  @include adaptiveValue("min-height", 545, 409,3,1440,375);
+  &.item-why-1 {
+    background-color: $accent2;
+    .item-why__num {
+      color: rgba(18, 18, 18, 0.20);
+    }
+    .item-why__btn {
+      border-color: $mainColor;
+      @media (any-hover: hover){
+        &:hover{
+          background-color: $mainColor;
+          color: white;
+        }
+      }
+    }
+  }
+  &.item-why-2 {
+    background-color: $accent4;
+    .item-why__num {
+      color: rgba(255, 255, 255, 0.20);
+    }
+    .item-why__title {
+      color: white;
+    }
+    .item-why__btn {
+      border-color: white;
+      color: white;
+      @media (any-hover: hover){
+        &:hover{
+          background-color: white;
+          color: $mainColor;
+        }
+      }
+    }
+  }
+  &.item-why-3 {
+    background-color: $accent;
+    .item-why__num {
+      color: rgba(255, 255, 255, 0.20);
+    }
+    .item-why__title {
+      color: white;
+    }
+    .item-why__btn {
+      border-color: white;
+      color: white;
+      @media (any-hover: hover){
+        &:hover{
+          background-color: white;
+          color: $mainColor;
+        }
+      }
+    }
+  }
+  &.item-why-4 {
+    background-color: $accent3;
+    .item-why__num {
+      color: rgba(18, 18, 18, 0.20);
+    }
+    .item-why__btn {
+      border-color: $mainColor;
+      @media (any-hover: hover){
+        &:hover{
+          background-color: $mainColor;
+          color: white;
+        }
+      }
+    }
+  }
+  
+  @media (max-width:$mobileSmall){
+     border-radius: toRem(15); 
+  }
+
+	// .item-why__head
+	&__head {
+	}
+  // .item-why__num
+  &__num {
+    @include adaptiveValue("margin-bottom", 65, 42,0,1920,1440);
+    @include adaptiveValue("margin-bottom", 42, 30,3,1440,375);
+    @include adaptiveValue("font-size", 64, 44,0,1920,1440);
+    @include adaptiveValue("font-size", 44, 36,3,1440,375);
+    @include adaptiveValue("letter-spacing", -2.56, -1.44);
+  }
+  // .item-why__title
+  &__title {
+    @include adaptiveValue("font-size", 52, 32);
+    @include adaptiveValue("letter-spacing", -1, -0.64);
+}
+  // .item-why__btn
+  &__btn {
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.66px;
+    text-transform: uppercase;
+
+    width: toRem(150);
+    height: toRem(150);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: toRem(1) solid transparent;
+    transition: all .3s ease;
+  }
+}
+
+
+// ========= SECTION CASES 03 =============================================================
+// ----------------------------------------------------
+.cases {
+  background-color: $accent4;
+  @include adaptiveValue("padding-top", 120, 60);
+  @include adaptiveValue("padding-bottom", 120, 60);
+  // .cases__container
+  &__container {
+  }
+  // .cases__title
+  &__title {
+    color: white;
+    @include adaptiveValue("margin-bottom", 120, 90,0,1920,1440);
+    @include adaptiveValue("margin-bottom", 90, 40,3,1440,375);
+    br {
+      @media (max-width:$mobile){
+         display: none; 
+      }
+    }
+    @media (max-width:$mobile){
+       line-height: 0.85; 
+    }
+  }
+  // .cases__title-sp
+  &__title-sp {
+    display: block;
+    text-align: right;
+    @media (max-width:$mobile){
+       display: inline; 
+       text-align: unset;
+    }
+  }
+  // .cases__list
+  &__list {
+    border: 1px solid #B0BAF6;
+  }
+  // .cases__item
+  &__item {
+    &:not(:last-child) {
+      border-bottom: 1px solid #B0BAF6;
+    }
+    &:nth-child(1) {
+      .cases__name {
+        @include adaptiveValue("margin-left", 200, 0,0,1920,480);
+      }
+    }
+    &:nth-child(2) {
+      .cases__name {
+        @include adaptiveValue("margin-left", 500, 0,0,1920,480);
+      }
+    }
+    &:nth-child(3) {
+      .cases__name {
+        @include adaptiveValue("margin-left", 800, 0,0,1920,480);
+      }
+    }
+    @media (any-hover: hover){
+      &:hover{
+        .cases__link {
+          background-color: $accent2;
+        }
+        .cases__num {
+          color: rgba(0, 0, 0, 0.10);
+        }
+        .cases__name {
+          color: $mainColor;
+          span {
+            color: $mainColor;
+          }
+        }
+        .cases__arr {
+          border-color: $mainColor;
+          background-color: $mainColor;
+          path {
+            fill: $accent2;
+          }
+        }
+      }
+    }
+  }
+  // .cases__link
+  &__link {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    column-gap: toRem(16);
+    @include adaptiveValue("padding-top", 50, 20);
+    @include adaptiveValue("padding-right", 50, 20);
+    @include adaptiveValue("padding-bottom", 50, 20);
+    @include adaptiveValue("padding-left", 50, 20);
+    transition: all .3s ease;
+  }
+  // .cases__num
+  &__num {
+    display: block;
+    color: rgba(255, 255, 255, 0.20);
+    @include adaptiveValue("font-size", 64, 48,0,1920,1440);
+    @include adaptiveValue("font-size", 48, 24,3,1440,375);
+    @include adaptiveValue("letter-spacing", -2.48, -0.96);
+    text-transform: uppercase;
+    transition: all .3s ease;
+  }
+  // .cases__name
+  &__name {
+    display: block;
+    color: #FFF;
+    @include adaptiveValue("font-size", 62, 46,0,1920,1440);
+    @include adaptiveValue("font-size", 46, 24,3,1440,375);
+    @include adaptiveValue("letter-spacing", -2.48, -0.96);
+    text-transform: uppercase;
+    transition: all .3s ease;
+    span {
+      color: $accent2;
+      transition: all .3s ease;
+    }
+  }
+  // .cases__arr
+  &__arr {
+    @include adaptiveValue("width", 80, 40);
+    @include adaptiveValue("height", 80, 40);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid white;
+    @include adaptiveValue("border-width", 7, 3);
+    background-color: transparent;
+    transition: all .3s ease;
+    svg {
+      @include adaptiveValue("width", 20, 10);
+    }
+    path {
+      transition: all .3s ease;
+      fill: white;
+    }
+  }
+}
+
+// ========= SECTION GOAL 04 =============================================================
+// ----------------------------------------------------
+.goal {
+  // .goal__container
+  &__container {
+  }
+  // .goal__tilte
+  &__tilte {
+    text-align: center;
+    line-height: 1;
+    @include adaptiveValue("font-size", 60, 44,0,1920,1440);
+    @include adaptiveValue("font-size", 44, 24,3,1440,375);
+    @include adaptiveValue("letter-spacing", -2.4, -0.96);
+    text-transform: uppercase;
+    @include adaptiveValue("margin-bottom", 60, 20);
+  }
+  // .goal__subtitle
+  &__subtitle {
+    text-align: center;
+    line-height: .9;
+    @include adaptiveValue("margin-bottom", 120, 40);
+    @media (max-width:$mobileSmall){
+       line-height: .85; 
+    }
+  }
+  // .goal__images
+  &__images {
+    margin: 0 auto;
+    width: 100%;
+    max-width: toRem(1358);
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      @media (max-width:$mobileSmall){
+         width: 130%; 
+         position: relative;
+         left: 50%;
+         transform: translateX(-50%);
+      }
+    }
+  }
+}
