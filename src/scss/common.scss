@@ -48,7 +48,7 @@
   font-family: Manrope;
   @include adaptiveValue("font-size", 24, 16);
   line-height: 1.1;
-  text-transform: uppercase;
+  font-weight: 500;
 }
 
 .title-main {
@@ -72,16 +72,16 @@
 }
 
 .bg-color-acc {
-  color: #EB4EBB;
+  background-color: #EB4EBB;
 }
 .bg-color-acc-2 {
-  color: #C2F732;
+  background-color: #C2F732;
 }
 .bg-color-acc-3 {
-  color: #FFFF05;
+  background-color: #FFFF05;
 }
 .bg-color-acc-4 {
-  color: #5E72EC;
+  background-color: #5E72EC;
 }
 
 .swiper-btn {
@@ -147,7 +147,6 @@
 }
 
 .line-why {
-  background-color: $accent4;
   @include adaptiveValue("padding-top", 18, 11);
   @include adaptiveValue("padding-bottom", 18, 11);
   overflow: hidden;

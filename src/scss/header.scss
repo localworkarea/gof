@@ -75,6 +75,7 @@
 		width: fit-content;
 
 		@include adaptiveValue("font-size", 24,18,0,1920,1440);
+		@include adaptiveValue("font-size", 18,24,3,901,900);
 		font-weight: 700;
 		letter-spacing: toRem(-0.48);
 		text-transform: uppercase;
