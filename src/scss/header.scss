@@ -6,7 +6,7 @@
 	width: 100%;
 	@include adaptiveValue("padding-top", 25, 20,0,1920,1440);
 	@include adaptiveValue("padding-bottom", 25, 20,0,1920,1440);
-	background-color: white;
+	// background-color: white;
 	 &::before {
 		content:'';
 		position: absolute;

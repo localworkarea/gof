@@ -1,26 +1,37 @@
 .hero {
-
+  // @include adaptiveValue("margin-top", 220, 165,0,1920,1440);
+  // @include adaptiveValue("margin-top", 165, 80,3,1440,375);
+  
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+	// .hero__body
+	&__body {
+    padding: toRem(100) 0 0 0;
+    // height: 100%;
+    width: 100%;
+	}
   // .hero__container
   &__container {
-    @include adaptiveValue("padding-top", 437,320,0,1920,1440);
-    @include adaptiveValue("padding-top", 320,160,3,1440,480);
+    // @include adaptiveValue("padding-top", 437,320,0,1920,1440);
+    // @include adaptiveValue("padding-top", 320,160,3,1440,480);
     position: relative;
     display: flex;
     column-gap: toRem(20);
-    &::before {
-      @media (min-width:em(1200.98)){
-        content:'';
-        position: absolute;
-        @include adaptiveValue("top", 344, 258,0,1920,1440);
-        left: 20px;
-        width: calc(100% - 40px);
-        height: toRem(1);
-        background-color: hsla(0, 0%, 0%, 0.15);
-      }
-      @media (max-width: em(1200.98)){
-          display: none;
-      }
-    }
+    // &::before {
+    //   @media (min-width:em(1200.98)){
+    //     content:'';
+    //     position: absolute;
+    //     @include adaptiveValue("top", 344, 258,0,1920,1440);
+    //     left: 20px;
+    //     width: calc(100% - 40px);
+    //     height: toRem(1);
+    //     background-color: hsla(0, 0%, 0%, 0.15);
+    //   }
+    //   @media (max-width: em(1200.98)){
+    //       display: none;
+    //   }
+    // }
     @media (max-width:$tablet){
       flex-direction: column;
     }
@@ -142,7 +153,7 @@
   // .why__line
   &__line {
     @include adaptiveValue("margin-bottom", 138, 100,0,1920,1440);
-    @include adaptiveValue("margin-bottom", 100, 40,3,1920,1440);
+    @include adaptiveValue("margin-bottom", 100, 40,3,1440,375);
   }
   // .why__container
   &__container {
@@ -155,7 +166,8 @@
     line-height: 0.85;
     @include adaptiveValue("letter-spacing", -6.4, -1.92);
     text-transform: uppercase;
-    max-width: toRem(1545);
+    // : toRem(1545);
+    @include adaptiveValue("max-width", 1545, 1160,0,1920,1440);
     margin: 0 auto;
     span {
       color: $accent;
