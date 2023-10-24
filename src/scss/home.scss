@@ -1030,3 +1030,597 @@
     }
 	}
 }
+
+// ========= SECTION GUARANTEES 07 =============================================================
+// ----------------------------------------------------
+.guarantees {
+  background-color: $accent2;
+  @include adaptiveValue("padding-top", 110, 60);
+  @include adaptiveValue("padding-bottom", 110, 60);
+  // .guarantees__container
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @media (min-width:$mobile){
+      column-gap: toRem(50);
+    }
+    @media (max-width:$mobile){
+       grid-template-columns: 1fr; 
+       row-gap: toRem(45);
+    }
+  }
+  // .guarantees__image
+  &__image {
+    @media (max-width:$mobile){
+       order: 2; 
+    }
+  }
+	// .guarantees__img-body
+	&__img-body {
+    @include adaptiveValue("max-width", 580, 435,0,1920,1440);
+    @media (max-width:$mobile){
+       max-width: 100% !important; 
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  // .guarantees__info
+  &__info {
+    @media (max-width:$mobile){
+      order: 1; 
+    }
+  }
+  // .guarantees__title
+  &__title {
+    @include adaptiveValue("padding-bottom", 55, 30);
+    border-bottom: toRem(1) solid rgba(0, 0, 0, 0.20);
+    margin-bottom: toRem(30);
+    br {
+      @media (max-width:$mobileSmall){
+         display: none; 
+      }
+    }
+  }
+  // .guarantees__buttons
+  &__buttons {
+    @media (min-width:$mobileSmall){
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      column-gap: toRem(50);
+    }
+  }
+  // .guarantees__txt
+  &__txt {
+    max-width: toRem(450);
+    font-family: "Manrope";
+    @include adaptiveValue("font-size", 24, 18);
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  // .guarantees__link
+  &__link {
+    @media (min-width:$mobileSmall){
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include adaptiveValue("width", 100, 75,0,1920,1440);
+      @include adaptiveValue("height", 100, 75,0,1920,1440);
+      border-radius: 50%;
+      background-color: $mainColor;
+      @include adaptiveValue("padding-left", 5, 3,0,1920,1440);
+      transition: all .3s ease;
+      svg {
+        @include adaptiveValue("width", 25, 19,0,1920,1440);
+        height: auto;
+      }
+      path {
+        fill: $accent2;
+        transition: all .3s ease;
+      }
+      @media (any-hover: hover){
+        &:hover{
+          background-color: $accent;
+          path {
+            fill: white;;
+          }
+        }
+      }
+    }
+    @media (max-width:$mobileSmall){
+       display: none; 
+    }
+  }
+}
+
+// ========= SECTION TESTIMONIALS 08 =============================================================
+// ----------------------------------------------------
+.testimonials {
+  @media (max-width: em(700.98)){
+      margin-bottom: toRem(80);
+  }
+  // .testimonials__line
+  &__line {
+    background-color: $accent4;
+  }
+  // .testimonials__container
+  &__container {
+    @media (min-width:em(700.98)){
+      position: relative;
+      &::before {
+        content:'';
+        position: absolute;
+        z-index: 5;
+        top: 0;
+        left: 50%;
+        height: 100%;
+        width: toRem(1);
+        background-color: rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+  // .testimonials__slider
+  &__slider {
+    width: 100%;
+  }
+  // .testimonials__wrapper
+  &__wrapper {
+  }
+  // .testimonials__slide
+  &__slide {
+    &.swiper-slide {
+      .slide-testim__left,
+      .slide-testim__right {
+        @media (max-width: em(700.98)){
+          opacity: 0;
+        }
+      }
+    }
+    &.swiper-slide-active {
+      .slide-testim__left,
+      .slide-testim__right {
+        @media (max-width: em(700.98)){
+          opacity: 1;
+        }
+      }
+    }
+    &.swiper-slide-prev {
+      .slide-testim__left,
+      .slide-testim__right {
+        @media (max-width: em(700.98)){
+          opacity: 0;
+        }
+      }
+    }
+  }
+  // .testimonials__nav
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    
+    @include adaptiveValue("bottom", 212, 130,0,1920,1440);
+    @include adaptiveValue("bottom", 130, 24,3,1440,1250);
+    @include adaptiveValue("max-width", 580, 475,0,1920,1440);
+    @include adaptiveValue("max-width", 475, 290,3,1440,700);
+
+    z-index: 5;
+    @media (min-width:em(700.98)){
+      position: absolute;
+      right: 0;
+    }
+    @media (max-width: em(700.98)){
+      position: relative;  
+      bottom: 0 !important;
+      max-width: 100% !important;
+    }
+  }
+  // .testimonials__pagination
+  &__pagination {
+  }
+  // .testimonials__btns
+  &__btns {
+  }
+}
+
+.slide-testim {
+  @include adaptiveValue("padding-top", 120, 90,0,1920,1440);
+  @include adaptiveValue("padding-top", 90, 40,3,1440,375);
+  @include adaptiveValue("padding-bottom", 120, 90,0,1920,1440);
+  @include adaptiveValue("padding-bottom", 90, 40,3,1440,375);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: white;
+  @media (max-width: em(700.98)){
+      grid-template-columns: 1fr;
+      row-gap: toRem(40);
+      padding-bottom: toRem(40) !important;
+  }
+  // .slide-testim__left
+  &__left {
+    @media (min-width:em(700.98)){
+      padding-right: toRem(40);
+    }
+    @media (max-width: em(700.98)){
+      transition: all .3s ease;
+    }
+  }
+  // .slide-testim__left-block
+  &__left-block {
+    @include adaptiveValue("max-width", 580, 435,0,1920,1440);
+    @include adaptiveValue("max-width", 435,350,3,1440,700 );
+    display: flex;
+    flex-direction: column;
+    @include adaptiveValue("row-gap", 100, 75,0,1920,1440);
+    @include adaptiveValue("row-gap", 75, 20,3,1440,375);
+  }
+  // .slide-testim__big
+  &__big {
+    color: $accent;
+    @include adaptiveValue("font-size", 140, 105,0,1920,1440);
+    @include adaptiveValue("font-size", 105, 48,3,1440,375);
+    @include adaptiveValue("letter-spacing", -5.6, -1.92);
+    text-transform: uppercase;
+  }
+  // .slide-testim__sml
+  &__sml {
+    @include adaptiveValue("font-size", 80, 60,0,1920,1440);
+    @include adaptiveValue("font-size", 60, 32,3,1440,375);
+    @include adaptiveValue("letter-spacing", -3.2, -1.28);
+    text-transform: uppercase;
+  }
+  // .slide-testim__right
+  &__right {
+    @media (max-width: em(700.98)){
+      transition: all .3s ease;
+    }
+  }
+  // .slide-testim__right-block
+  &__right-block {
+    @include adaptiveValue("padding-left", 300, 225,0,1910,1440);
+    @include adaptiveValue("padding-left", 225, 40,3,1440,768);
+    @include adaptiveValue("padding-bottom", 55, 41,0,1920,1440);
+    @include adaptiveValue("min-height", 300, 235,0,1910,1440);
+
+    display: flex;
+    flex-direction: column;
+    row-gap: toRem(20);
+    @media (min-width:em(1100.98)){
+      border-bottom: toRem(1) solid rgba(0, 0, 0, 0.15);
+    }
+    @media (max-width: em(700.98)){
+        min-height: auto !important;
+        padding-left: 0 !important;
+        padding-bottom: 0 !important;
+    }
+  }
+  // .slide-testim__texts
+  &__texts {
+    flex: 1;
+  }
+  // .slide-testim__txt
+  &__txt {
+    @include adaptiveValue("font-size", 24, 18);
+    @include adaptiveValue("letter-spacing", -0.72, -0.54);
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 25, 18);
+    }
+  }
+  // .slide-testim__btm
+  &__btm {
+  }
+  // .slide-testim__name
+  &__name {
+    @include adaptiveValue("font-size", 36, 28);
+    @include adaptiveValue("letter-spacing", -0.72, -0.56);
+    text-transform: uppercase;
+    line-height: normal;
+  }
+  // .slide-testim__position
+  &__position {
+    color: $gray87;
+    @include adaptiveValue("font-size", 28, 22);
+    @include adaptiveValue("letter-spacing", -0.56, -0.44);
+    line-height: normal;
+  }
+}
+
+// ========= SECTION FRIENDS 09 =============================================================
+// ----------------------------------------------------
+.friends {
+  background-color: $accent4;
+  @include adaptiveValue("padding-top", 120, 60);
+  @include adaptiveValue("padding-bottom", 120, 60);
+  // .friends__container
+  &__container {
+  }
+  // .friends__title
+  &__title {
+    color: $accent2;
+    text-align: center;
+    @include adaptiveValue("font-size", 170, 127,0,1920,1440);
+    @include adaptiveValue("font-size", 127, 48,3,1440,375);
+    @include adaptiveValue("letter-spacing", -6.8, -1.92);
+    text-transform: uppercase;
+    margin: 0 auto;
+    @include adaptiveValue("max-width", 995, 745,0,1920,1440);
+  }
+}
+
+// ========= SECTION FORM 10 =============================================================
+// ----------------------------------------------------
+.form {
+  // .form__container
+  &__container {
+  }
+  // .form__title
+  &__title {
+    @include adaptiveValue("font-size", 140, 111,0,1920,1440);
+    @include adaptiveValue("font-size", 111, 48,3,1440,375);
+    @include adaptiveValue("letter-spacing", -5.6, -1.92);
+    text-transform: uppercase;
+    line-height: 0.9;
+    @include adaptiveValue("margin-bottom", 120, 90,0,1920,1440);
+    @include adaptiveValue("margin-bottom", 90, 40,3,1440,375);
+    br {
+      @media (max-width:$tablet){
+        display: none;
+      }
+    }
+  }
+  // .form__title-span
+  &__title-span {
+    @media (min-width:$tablet){
+      display: block;
+      text-align: right;
+    }
+  }
+  // .form__body
+  &__body {
+    display: grid;
+    grid-template-columns: 42% 58%;
+    @include adaptiveValue("padding-top", 100, 75,0,1920,1440);
+    @include adaptiveValue("padding-top", 75, 40,3,1440,768);
+    @include adaptiveValue("padding-bottom", 220, 165,0,1920,1440);
+    @include adaptiveValue("padding-bottom", 165, 80,3,1440,375);
+    
+    @media (min-width:em(750.98)){
+      border-top: toRem(1) solid rgba(0, 0, 0, 0.15);
+      position: relative;
+      &::before {
+        content:'';
+        position: absolute;
+        z-index: 5;
+        top: 0;
+        left: 42%;
+        height: 100%;
+        width: toRem(1);
+        background-color: rgba(0, 0, 0, 0.15);
+      }
+    }
+    @media (max-width: em(750.98)){
+        grid-template-columns: 1fr;
+        padding-top: 0 !important;
+        row-gap: toRem(40);
+    }
+  }
+  // .form__social
+  &__social {
+    @media (max-width: em(750.98)){
+      order: 2;
+    }
+  }
+  // .form__form-item
+  &__form-item {
+    @media (max-width: em(750.98)){
+      order: 1;
+    }
+  }
+}
+
+.social-form {
+  @media (min-width:em(750.98)){
+    padding-right: toRem(40);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    row-gap: toRem(20);
+  }
+  // .social-form__txt
+  &__txt {
+    color: $gray87;
+    @include adaptiveValue("font-size", 28, 24);
+    line-height: 1;
+    letter-spacing: -0.28px;
+    max-width: toRem(322);
+    @media (max-width: em(750.98)){
+        margin-bottom: toRem(40);
+    }
+  }
+  // .social-form__block
+  &__block {
+  }
+  // .social-form__big-txt
+  &__big-txt {
+    @include adaptiveValue("font-size", 64, 48,0,1920,1440);
+    @include adaptiveValue("font-size", 48, 24,3,1440,375);
+    @include adaptiveValue("letter-spacing", -2.56, -0.96);
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: toRem(15);
+  }
+  // .social-form__links
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: toRem(5);
+    @media (max-width:em(900.98)){
+       flex-direction: column;
+    }
+  }
+  // .social-form__link
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: toRem(10);
+
+    border-radius: toRem(120);
+    border: 1px solid #EAEAEA;
+    background-color: #FBFBFB;
+    width: fit-content;
+    @include adaptiveValue("padding-left", 31, 23,0,1920,1440);
+    @include adaptiveValue("padding-right", 31, 23,0,1920,1440);
+    @include adaptiveValue("padding-top", 20, 15);
+    @include adaptiveValue("padding-bottom", 20, 15);
+
+    font-size: toRem(18);
+    line-height: normal;
+    letter-spacing: -0.18px;
+    transition: all .3s ease;
+    &.link-color-1 {
+      @media (any-hover: hover){
+        &:hover{
+          border-color: #FE01B3;
+        }
+      }
+    }
+    &.link-color-2 {
+      @media (any-hover: hover){
+        &:hover{
+          border-color: #29A9EA;
+        }
+      }
+    }
+    &.link-color-3 {
+      @media (any-hover: hover){
+        &:hover{
+          border-color: #42EA61;
+        }
+      }
+    }
+    &.link-color-4 {
+      @media (any-hover: hover){
+        &:hover{
+          border-color: #815DF3;
+        }
+      }
+    }
+    @media (max-width:em(900.98)){
+       width: 100%; 
+    }
+  }
+  // .social-form__img
+  &__img {
+  }
+  // .social-form__link-txt
+  &__link-txt {
+  }
+}
+
+
+// ========= SECTION FOOTER 11 =============================================================
+// ----------------------------------------------------
+.footer {
+  background-color: $mainColor;
+  @include adaptiveValue("padding-top", 50, 40);
+  @include adaptiveValue("padding-top", 50, 40);
+  padding-bottom: toRem(27);
+  // .footer__container
+  &__container {
+  }
+  // .footer__image
+  &__image {
+    @include adaptiveValue("padding-bottom", 60, 20);
+    border-bottom: toRem(1) solid rgba(255, 255, 255, 0.2);
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  // .footer__block
+  &__block {
+    @include adaptiveValue("padding-top", 21, 16);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  // .footer__left
+  &__left {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    @include adaptiveValue("max-width", 1040, 750,0,1920,1440);
+    @include adaptiveValue("max-width", 750, 480,3,1440,768);
+    justify-content: space-between;
+    column-gap: toRem(40);
+    @media (max-width:$mobile){
+       flex-direction: column;
+       row-gap: toRem(5); 
+       align-items: flex-start;
+    }
+  }
+  // .footer__policy
+  &__policy {
+    color: white;
+    font-family: "Manrope";
+    @include adaptiveValue("font-size", 18, 14);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  // .footer__link
+  &__link {
+
+    color: white;
+    font-family: "Manrope";
+    @include adaptiveValue("font-size", 18, 14);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    @include adaptiveValue("letter-spacing", -0.36, -0.28);
+    transition: all .3s ease;
+    @media (any-hover: hover){
+      &:hover{
+        color: $accent2;
+      }
+    }
+  }
+  // .footer__totop
+  &__totop {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include adaptiveValue("width", 42, 34);
+    @include adaptiveValue("height", 42, 34);
+    border-radius: 50%;
+    border: toRem(2) solid white;
+    padding-bottom: 2px;
+
+    transition: all .3s ease;
+    @media (any-hover: hover){
+      &:hover{
+        background-color: white;
+        path {
+          stroke: $mainColor;
+        }
+      }
+    }
+    svg {
+      @include adaptiveValue("width", 19, 11);
+    }
+
+    path {
+      stroke: white;
+      transition: all .3s ease;
+    }
+  }
+}

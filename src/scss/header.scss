@@ -198,7 +198,7 @@
 			background-color: $accent;
 		}
 	}
-	&._open-menu {
+	.menu-open & {
 		@media (any-hover: hover){
 			&:hover{
 				background-color: $accent2;
@@ -229,7 +229,7 @@
 			left: 50%;
 			transition: all .45s ease;
 			opacity: 0;
-			._open-menu & {
+			.menu-open & {
 				@include adaptiveValue("width", 25, 20,0,1920,1440);
 				opacity: 1;
 			}
@@ -254,7 +254,7 @@
 		&:nth-child(1) {
 			top: 0;
 			left: 0;
-			._open-menu & {
+			.menu-open & {
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%,-50%);
@@ -264,7 +264,7 @@
 		&:nth-child(2) {
 			top: 0;
 			right: 0;
-			._open-menu & {
+			.menu-open &{
 				top: 50%;
 				right: 50%;
 				transform: translate(50%,-50%);
@@ -274,7 +274,7 @@
 		&:nth-child(3) {
 			bottom: 0;
 			left: 0;
-			._open-menu & {
+			.menu-open &{
 				bottom: 50%;
 				left: 50%;
 				transform: translate(-50%,50%);
@@ -284,7 +284,7 @@
 		&:nth-child(4) {
 			bottom: 0;
 			right: 0;
-			._open-menu & {
+			.menu-open & {
 				bottom: 50%;
 				right: 50%;
 				transform: translate(50%,50%);

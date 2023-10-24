@@ -8,7 +8,7 @@
 // При необхідності підключаємо додаткові модулі слайдера, вказуючи їх у {} через кому
 // Приклад: { Navigation, Autoplay }
 import Swiper from 'swiper';
-import { Navigation, EffectCards, Pagination } from 'swiper/modules';
+import { Navigation, EffectCards, Pagination, EffectFade } from 'swiper/modules';
 /*
 Основні модулі слайдера:
 Navigation, Pagination, Autoplay, 
@@ -18,7 +18,7 @@ EffectFade, Lazy, Manipulation
 
 // Стилі Swiper
 // Базові стилі
-import "../../scss/base/swiper.scss";
+// import "../../scss/base/swiper.scss";
 // Повний набір стилів з scss/libs/swiper.scss
 import "../../scss/libs/swiper.scss";
 // Повний набір стилів з node_modules
@@ -26,44 +26,53 @@ import "../../scss/libs/swiper.scss";
 
 // Ініціалізація слайдерів
 function initSliders() {
-	// Список слайдерів
-	// Перевіряємо, чи є слайдер на сторінці
-	if (document.querySelector('.why__slider')) { // Вказуємо склас потрібного слайдера
-		// Створюємо слайдер
-		new Swiper('.why__slider', { // Вказуємо склас потрібного слайдера
-			// Підключаємо модулі слайдера
-			// для конкретного випадку
+	if (document.querySelector('.why__slider')) { 
+		new Swiper('.why__slider', { 
 			modules: [Navigation, EffectCards, Pagination],
-			// observer: true,
-			// observeParents: true,
-			// slidesPerView: 1,
-			// spaceBetween: 0,
+			observer: true,
+			observeParents: true,
 			speed: 500,
-
-			//touchRatio: 0,
-			//simulateTouch: false,
-			//loop: true,
-			//preloadImages: false,
-			//lazy: true,
-
-			/*
-			// Ефекти
-			effect: 'fade',
-			autoplay: {
-				delay: 3000,
-				disableOnInteraction: false,
-			},
-			*/
-
 			effect: "cards",
       grabCursor: true,
 			slideShadows: false,
 			perSlideOffset: 1,
 			perSlideRotate: 5,
 			rotate: true,
+			pagination: {
+				el: '.why__pagination',
+				type: 'custom',
+				renderCustom: function (swiper, current, total) {
+					var currentSlide = ('0' + current).slice(-2); // Добавляем нули и ограничиваем до двух символов
+					var totalSlides = ('0' + total).slice(-2); // Добавляем нули и ограничиваем до двух символов
+			
+					return '<span class="pagination-current">' + currentSlide + '</span> / ' +
+						'<span class="pagination-total">' + totalSlides + '</span>';
+				}
+			},
+			navigation: {
+				prevEl: '.why__slider-wrap .swiper-button-prev',
+				nextEl: '.why__slider-wrap .swiper-button-next',
+			},
+		});
+	}
+	if (document.querySelector('.testimonials__slider')) {
+		new Swiper('.testimonials__slider', { 
+			modules: [Navigation, EffectFade, Pagination],
+			observer: true,
+			observeParents: true,
+			// slidesPerView: 1,
+			// spaceBetween: 0,
+			speed: 300,
+			effect: 'fade',
+			// crossFade: true,
+			// autoplay: {
+			// 	delay: 1000,
+			// 	disableOnInteraction: false,
+			// },
+
 
 			pagination: {
-				el: '.swiper-pagination',
+				el: '.testimonials__pagination',
 				type: 'custom',
 				renderCustom: function (swiper, current, total) {
 					var currentSlide = ('0' + current).slice(-2); // Добавляем нули и ограничиваем до двух символов
@@ -74,91 +83,22 @@ function initSliders() {
 				}
 			},
 			
-			
-			
-
-			// Пагінація
-			/*
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			*/
-
-			// Скроллбар
-			/*
-			scrollbar: {
-				el: '.swiper-scrollbar',
-				draggable: true,
-			},
-			*/
-
-			// Кнопки "вліво/вправо"
 			navigation: {
-				prevEl: '.why__slider-wrap .swiper-button-prev',
-				nextEl: '.why__slider-wrap .swiper-button-next',
+				prevEl: '.testimonials__slider .swiper-button-prev',
+				nextEl: '.testimonials__slider .swiper-button-next',
 			},
-			/*
-			// Брейкпоінти
-			breakpoints: {
-				640: {
-					slidesPerView: 1,
-					spaceBetween: 0,
-					autoHeight: true,
-				},
-				768: {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-				992: {
-					slidesPerView: 3,
-					spaceBetween: 20,
-				},
-				1268: {
-					slidesPerView: 4,
-					spaceBetween: 30,
-				},
-			},
-			*/
-			// Події
-			on: {
-
-			}
+			// breakpoints: {
+			// 	320: {
+			// 		autoHeight: true,
+			// 	},
+			// 	700: {
+			// 		autoHeight: false,
+			// 	}
+			// },
 		});
-	}
-}
-// Скролл на базі слайдера (за класом swiper scroll для оболонки слайдера)
-function initSlidersScroll() {
-	let sliderScrollItems = document.querySelectorAll('.swiper_scroll');
-	if (sliderScrollItems.length > 0) {
-		for (let index = 0; index < sliderScrollItems.length; index++) {
-			const sliderScrollItem = sliderScrollItems[index];
-			const sliderScrollBar = sliderScrollItem.querySelector('.swiper-scrollbar');
-			const sliderScroll = new Swiper(sliderScrollItem, {
-				observer: true,
-				observeParents: true,
-				direction: 'vertical',
-				slidesPerView: 'auto',
-				freeMode: {
-					enabled: true,
-				},
-				scrollbar: {
-					el: sliderScrollBar,
-					draggable: true,
-					snapOnRelease: false
-				},
-				mousewheel: {
-					releaseOnEdges: true,
-				},
-			});
-			sliderScroll.scrollbar.updateSize();
-		}
 	}
 }
 
 window.addEventListener("load", function (e) {
-	// Запуск ініціалізації слайдерів
 	initSliders();
-	// Запуск ініціалізації скролла на базі слайдера (за класом swiper_scroll)
-	//initSlidersScroll();
 });

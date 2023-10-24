@@ -3242,6 +3242,176 @@
                     }(), n;
                 }();
             }));
+        },
+        2: function(module, exports, __webpack_require__) {
+            var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+ /*! smooth-scroll v16.1.3 | (c) 2020 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/smooth-scroll */            window.Element && !Element.prototype.closest && (Element.prototype.closest = function(e) {
+                var t, n = (this.document || this.ownerDocument).querySelectorAll(e), o = this;
+                do {
+                    for (t = n.length; 0 <= --t && n.item(t) !== o; ) ;
+                } while (t < 0 && (o = o.parentElement));
+                return o;
+            }), function() {
+                if ("function" == typeof window.CustomEvent) return;
+                function e(e, t) {
+                    t = t || {
+                        bubbles: !1,
+                        cancelable: !1,
+                        detail: void 0
+                    };
+                    var n = document.createEvent("CustomEvent");
+                    return n.initCustomEvent(e, t.bubbles, t.cancelable, t.detail), n;
+                }
+                e.prototype = window.Event.prototype, window.CustomEvent = e;
+            }(), function() {
+                for (var r = 0, e = [ "ms", "moz", "webkit", "o" ], t = 0; t < e.length && !window.requestAnimationFrame; ++t) window.requestAnimationFrame = window[e[t] + "RequestAnimationFrame"], 
+                window.cancelAnimationFrame = window[e[t] + "CancelAnimationFrame"] || window[e[t] + "CancelRequestAnimationFrame"];
+                window.requestAnimationFrame || (window.requestAnimationFrame = function(e, t) {
+                    var n = (new Date).getTime(), o = Math.max(0, 16 - (n - r)), a = window.setTimeout((function() {
+                        e(n + o);
+                    }), o);
+                    return r = n + o, a;
+                }), window.cancelAnimationFrame || (window.cancelAnimationFrame = function(e) {
+                    clearTimeout(e);
+                });
+            }(), function(e, t) {
+                true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+                    return t(e);
+                }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== void 0 && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : 0;
+            }("undefined" != typeof __webpack_require__.g ? __webpack_require__.g : "undefined" != typeof window ? window : this, (function(M) {
+                "use strict";
+                var q = {
+                    ignore: "[data-scroll-ignore]",
+                    header: null,
+                    topOnEmptyHash: !0,
+                    speed: 500,
+                    speedAsDuration: !1,
+                    durationMax: null,
+                    durationMin: null,
+                    clip: !0,
+                    offset: 0,
+                    easing: "easeInOutCubic",
+                    customEasing: null,
+                    updateURL: !0,
+                    popstate: !0,
+                    emitEvents: !0
+                }, I = function() {
+                    var n = {};
+                    return Array.prototype.forEach.call(arguments, (function(e) {
+                        for (var t in e) {
+                            if (!e.hasOwnProperty(t)) return;
+                            n[t] = e[t];
+                        }
+                    })), n;
+                }, r = function(e) {
+                    "#" === e.charAt(0) && (e = e.substr(1));
+                    for (var t, n = String(e), o = n.length, a = -1, r = "", i = n.charCodeAt(0); ++a < o; ) {
+                        if (0 === (t = n.charCodeAt(a))) throw new InvalidCharacterError("Invalid character: the input contains U+0000.");
+                        1 <= t && t <= 31 || 127 == t || 0 === a && 48 <= t && t <= 57 || 1 === a && 48 <= t && t <= 57 && 45 === i ? r += "\\" + t.toString(16) + " " : r += 128 <= t || 45 === t || 95 === t || 48 <= t && t <= 57 || 65 <= t && t <= 90 || 97 <= t && t <= 122 ? n.charAt(a) : "\\" + n.charAt(a);
+                    }
+                    return "#" + r;
+                }, F = function() {
+                    return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight);
+                }, L = function(e) {
+                    return e ? (t = e, parseInt(M.getComputedStyle(t).height, 10) + e.offsetTop) : 0;
+                    var t;
+                }, x = function(e, t, n) {
+                    0 === e && document.body.focus(), n || (e.focus(), document.activeElement !== e && (e.setAttribute("tabindex", "-1"), 
+                    e.focus(), e.style.outline = "none"), M.scrollTo(0, t));
+                }, H = function(e, t, n, o) {
+                    if (t.emitEvents && "function" == typeof M.CustomEvent) {
+                        var a = new CustomEvent(e, {
+                            bubbles: !0,
+                            detail: {
+                                anchor: n,
+                                toggle: o
+                            }
+                        });
+                        document.dispatchEvent(a);
+                    }
+                };
+                return function(o, e) {
+                    var b, a, A, O, C = {};
+                    C.cancelScroll = function(e) {
+                        cancelAnimationFrame(O), O = null, e || H("scrollCancel", b);
+                    }, C.animateScroll = function(a, r, e) {
+                        C.cancelScroll();
+                        var i = I(b || q, e || {}), c = "[object Number]" === Object.prototype.toString.call(a), t = c || !a.tagName ? null : a;
+                        if (c || t) {
+                            var s = M.pageYOffset;
+                            i.header && !A && (A = document.querySelector(i.header));
+                            var n, o, u, l, m, d, f, h, p = L(A), g = c ? a : function(e, t, n, o) {
+                                var a = 0;
+                                if (e.offsetParent) for (;a += e.offsetTop, e = e.offsetParent; ) ;
+                                return a = Math.max(a - t - n, 0), o && (a = Math.min(a, F() - M.innerHeight)), 
+                                a;
+                            }(t, p, parseInt("function" == typeof i.offset ? i.offset(a, r) : i.offset, 10), i.clip), y = g - s, v = F(), w = 0, S = (n = y, 
+                            u = (o = i).speedAsDuration ? o.speed : Math.abs(n / 1e3 * o.speed), o.durationMax && u > o.durationMax ? o.durationMax : o.durationMin && u < o.durationMin ? o.durationMin : parseInt(u, 10)), E = function(e) {
+                                var t, n, o;
+                                l || (l = e), w += e - l, d = s + y * (n = m = 1 < (m = 0 === S ? 0 : w / S) ? 1 : m, 
+                                "easeInQuad" === (t = i).easing && (o = n * n), "easeOutQuad" === t.easing && (o = n * (2 - n)), 
+                                "easeInOutQuad" === t.easing && (o = n < .5 ? 2 * n * n : (4 - 2 * n) * n - 1), 
+                                "easeInCubic" === t.easing && (o = n * n * n), "easeOutCubic" === t.easing && (o = --n * n * n + 1), 
+                                "easeInOutCubic" === t.easing && (o = n < .5 ? 4 * n * n * n : (n - 1) * (2 * n - 2) * (2 * n - 2) + 1), 
+                                "easeInQuart" === t.easing && (o = n * n * n * n), "easeOutQuart" === t.easing && (o = 1 - --n * n * n * n), 
+                                "easeInOutQuart" === t.easing && (o = n < .5 ? 8 * n * n * n * n : 1 - 8 * --n * n * n * n), 
+                                "easeInQuint" === t.easing && (o = n * n * n * n * n), "easeOutQuint" === t.easing && (o = 1 + --n * n * n * n * n), 
+                                "easeInOutQuint" === t.easing && (o = n < .5 ? 16 * n * n * n * n * n : 1 + 16 * --n * n * n * n * n), 
+                                t.customEasing && (o = t.customEasing(n)), o || n), M.scrollTo(0, Math.floor(d)), 
+                                function(e, t) {
+                                    var n = M.pageYOffset;
+                                    if (e == t || n == t || (s < t && M.innerHeight + n) >= v) return C.cancelScroll(!0), 
+                                    x(a, t, c), H("scrollStop", i, a, r), !(O = l = null);
+                                }(d, g) || (O = M.requestAnimationFrame(E), l = e);
+                            };
+                            0 === M.pageYOffset && M.scrollTo(0, 0), f = a, h = i, c || history.pushState && h.updateURL && history.pushState({
+                                smoothScroll: JSON.stringify(h),
+                                anchor: f.id
+                            }, document.title, f === document.documentElement ? "#top" : "#" + f.id), "matchMedia" in M && M.matchMedia("(prefers-reduced-motion)").matches ? x(a, Math.floor(g), !1) : (H("scrollStart", i, a, r), 
+                            C.cancelScroll(!0), M.requestAnimationFrame(E));
+                        }
+                    };
+                    var t = function(e) {
+                        if (!e.defaultPrevented && !(0 !== e.button || e.metaKey || e.ctrlKey || e.shiftKey) && "closest" in e.target && (a = e.target.closest(o)) && "a" === a.tagName.toLowerCase() && !e.target.closest(b.ignore) && a.hostname === M.location.hostname && a.pathname === M.location.pathname && /#/.test(a.href)) {
+                            var t, n;
+                            try {
+                                t = r(decodeURIComponent(a.hash));
+                            } catch (e) {
+                                t = r(a.hash);
+                            }
+                            if ("#" === t) {
+                                if (!b.topOnEmptyHash) return;
+                                n = document.documentElement;
+                            } else n = document.querySelector(t);
+                            (n = n || "#top" !== t ? n : document.documentElement) && (e.preventDefault(), function(e) {
+                                if (history.replaceState && e.updateURL && !history.state) {
+                                    var t = M.location.hash;
+                                    t = t || "", history.replaceState({
+                                        smoothScroll: JSON.stringify(e),
+                                        anchor: t || M.pageYOffset
+                                    }, document.title, t || M.location.href);
+                                }
+                            }(b), C.animateScroll(n, a));
+                        }
+                    }, n = function(e) {
+                        if (null !== history.state && history.state.smoothScroll && history.state.smoothScroll === JSON.stringify(b)) {
+                            var t = history.state.anchor;
+                            "string" == typeof t && t && !(t = document.querySelector(r(history.state.anchor))) || C.animateScroll(t, null, {
+                                updateURL: !1
+                            });
+                        }
+                    };
+                    C.destroy = function() {
+                        b && (document.removeEventListener("click", t, !1), M.removeEventListener("popstate", n, !1), 
+                        C.cancelScroll(), O = A = a = b = null);
+                    };
+                    return function() {
+                        if (!("querySelector" in document && "addEventListener" in M && "requestAnimationFrame" in M && "closest" in M.Element.prototype)) throw "Smooth Scroll: This browser does not support the required JavaScript methods and browser APIs.";
+                        C.destroy(), b = I(q, e || {}), A = b.header ? document.querySelector(b.header) : null, 
+                        document.addEventListener("click", t, !1), b.updateURL && b.popstate && M.addEventListener("popstate", n, !1);
+                    }(), C;
+                };
+            }));
         }
     };
     var __webpack_module_cache__ = {};
@@ -3254,6 +3424,16 @@
         __webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
         return module.exports;
     }
+    (() => {
+        __webpack_require__.g = function() {
+            if (typeof globalThis === "object") return globalThis;
+            try {
+                return this || new Function("return this")();
+            } catch (e) {
+                if (typeof window === "object") return window;
+            }
+        }();
+    })();
     (() => {
         "use strict";
         const flsModules = {};
@@ -3467,19 +3647,6 @@
                     if (!this._reopen) this.previousActiveElement = document.activeElement;
                     this.targetOpen.element = document.querySelector(this.targetOpen.selector);
                     if (this.targetOpen.element) {
-                        if (this.youTubeCode) {
-                            const codeVideo = this.youTubeCode;
-                            const urlVideo = `https://www.youtube.com/embed/${codeVideo}?rel=0&showinfo=0&autoplay=1`;
-                            const iframe = document.createElement("iframe");
-                            iframe.setAttribute("allowfullscreen", "");
-                            const autoplay = this.options.setAutoplayYoutube ? "autoplay;" : "";
-                            iframe.setAttribute("allow", `${autoplay}; encrypted-media`);
-                            iframe.setAttribute("src", urlVideo);
-                            if (!this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) {
-                                this.targetOpen.element.querySelector(".popup__text").setAttribute(`${this.options.youtubePlaceAttribute}`, "");
-                            }
-                            this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).appendChild(iframe);
-                        }
                         if (this.options.hashSettings.location) {
                             this._getHash();
                             this._setHash();
@@ -3520,7 +3687,6 @@
                         popup: this
                     }
                 }));
-                if (this.youTubeCode) if (this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).innerHTML = "";
                 this.previousOpen.element.classList.remove(this.options.classes.popupActive);
                 this.previousOpen.element.setAttribute("aria-hidden", "true");
                 if (!this._reopen) {
@@ -3550,7 +3716,6 @@
             _openToHash() {
                 let classInHash = document.querySelector(`.${window.location.hash.replace("#", "")}`) ? `.${window.location.hash.replace("#", "")}` : document.querySelector(`${window.location.hash}`) ? `${window.location.hash}` : null;
                 const buttons = document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash.replace(".", "#")}"]`);
-                this.youTubeCode = buttons.getAttribute(this.options.youtubeAttribute) ? buttons.getAttribute(this.options.youtubeAttribute) : null;
                 if (buttons && classInHash) this.open(classInHash);
             }
             _setHash() {
@@ -3581,6 +3746,7 @@
             }
         }
         flsModules.popup = new Popup({});
+        var smooth_scroll_polyfills_min = __webpack_require__(2);
         let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
             const targetBlockElement = document.querySelector(targetBlock);
             if (targetBlockElement) {
@@ -3607,7 +3773,7 @@
                     easing: "easeOutQuad"
                 };
                 document.documentElement.classList.contains("menu-open") ? menuClose() : null;
-                if (typeof SmoothScroll !== "undefined") (new SmoothScroll).animateScroll(targetBlockElement, "", options); else {
+                if (typeof smooth_scroll_polyfills_min !== "undefined") (new smooth_scroll_polyfills_min).animateScroll(targetBlockElement, "", options); else {
                     let targetBlockElementPosition = targetBlockElement.getBoundingClientRect().top + scrollY;
                     targetBlockElementPosition = headerItemHeight ? targetBlockElementPosition - headerItemHeight : targetBlockElementPosition;
                     targetBlockElementPosition = offsetTop ? targetBlockElementPosition - offsetTop : targetBlockElementPosition;
@@ -6163,7 +6329,7 @@
             classes
         };
         const extendedDefaults = {};
-        class swiper_core_Swiper {
+        class Swiper {
             constructor() {
                 let el;
                 let params;
@@ -6179,7 +6345,7 @@
                         const newParams = utils_extend({}, params, {
                             el: containerEl
                         });
-                        swipers.push(new swiper_core_Swiper(newParams));
+                        swipers.push(new Swiper(newParams));
                     }));
                     return swipers;
                 }
@@ -6537,25 +6703,25 @@
                 return defaults;
             }
             static installModule(mod) {
-                if (!swiper_core_Swiper.prototype.__modules__) swiper_core_Swiper.prototype.__modules__ = [];
-                const modules = swiper_core_Swiper.prototype.__modules__;
+                if (!Swiper.prototype.__modules__) Swiper.prototype.__modules__ = [];
+                const modules = Swiper.prototype.__modules__;
                 if (typeof mod === "function" && modules.indexOf(mod) < 0) modules.push(mod);
             }
             static use(module) {
                 if (Array.isArray(module)) {
-                    module.forEach((m => swiper_core_Swiper.installModule(m)));
-                    return swiper_core_Swiper;
+                    module.forEach((m => Swiper.installModule(m)));
+                    return Swiper;
                 }
-                swiper_core_Swiper.installModule(module);
-                return swiper_core_Swiper;
+                Swiper.installModule(module);
+                return Swiper;
             }
         }
         Object.keys(prototypes).forEach((prototypeGroup => {
             Object.keys(prototypes[prototypeGroup]).forEach((protoMethod => {
-                swiper_core_Swiper.prototype[protoMethod] = prototypes[prototypeGroup][protoMethod];
+                Swiper.prototype[protoMethod] = prototypes[prototypeGroup][protoMethod];
             }));
         }));
-        swiper_core_Swiper.use([ Resize, Observer ]);
+        Swiper.use([ Resize, Observer ]);
         function create_element_if_not_defined_createElementIfNotDefined(swiper, originalParams, params, checkProps) {
             if (swiper.params.createElements) Object.keys(checkProps).forEach((key => {
                 if (!params[key] && params.auto === true) {
@@ -7064,6 +7230,46 @@
                 destroy
             });
         }
+        function effect_init_effectInit(params) {
+            const {effect, swiper, on, setTranslate, setTransition, overwriteParams, perspective, recreateShadows, getEffectParams} = params;
+            on("beforeInit", (() => {
+                if (swiper.params.effect !== effect) return;
+                swiper.classNames.push(`${swiper.params.containerModifierClass}${effect}`);
+                if (perspective && perspective()) swiper.classNames.push(`${swiper.params.containerModifierClass}3d`);
+                const overwriteParamsResult = overwriteParams ? overwriteParams() : {};
+                Object.assign(swiper.params, overwriteParamsResult);
+                Object.assign(swiper.originalParams, overwriteParamsResult);
+            }));
+            on("setTranslate", (() => {
+                if (swiper.params.effect !== effect) return;
+                setTranslate();
+            }));
+            on("setTransition", ((_s, duration) => {
+                if (swiper.params.effect !== effect) return;
+                setTransition(duration);
+            }));
+            on("transitionEnd", (() => {
+                if (swiper.params.effect !== effect) return;
+                if (recreateShadows) {
+                    if (!getEffectParams || !getEffectParams().slideShadows) return;
+                    swiper.slides.forEach((slideEl => {
+                        slideEl.querySelectorAll(".swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left").forEach((shadowEl => shadowEl.remove()));
+                    }));
+                    recreateShadows();
+                }
+            }));
+            let requireUpdateOnVirtual;
+            on("virtualUpdate", (() => {
+                if (swiper.params.effect !== effect) return;
+                if (!swiper.slides.length) requireUpdateOnVirtual = true;
+                requestAnimationFrame((() => {
+                    if (requireUpdateOnVirtual && swiper.slides && swiper.slides.length) {
+                        setTranslate();
+                        requireUpdateOnVirtual = false;
+                    }
+                }));
+            }));
+        }
         function effect_target_effectTarget(effectParams, slideEl) {
             const transformEl = utils_getSlideTransformEl(slideEl);
             if (transformEl !== slideEl) {
@@ -7104,6 +7310,59 @@
                 }));
             }
         }
+        function EffectFade(_ref) {
+            let {swiper, extendParams, on} = _ref;
+            extendParams({
+                fadeEffect: {
+                    crossFade: false
+                }
+            });
+            const setTranslate = () => {
+                const {slides} = swiper;
+                const params = swiper.params.fadeEffect;
+                for (let i = 0; i < slides.length; i += 1) {
+                    const slideEl = swiper.slides[i];
+                    const offset = slideEl.swiperSlideOffset;
+                    let tx = -offset;
+                    if (!swiper.params.virtualTranslate) tx -= swiper.translate;
+                    let ty = 0;
+                    if (!swiper.isHorizontal()) {
+                        ty = tx;
+                        tx = 0;
+                    }
+                    const slideOpacity = swiper.params.fadeEffect.crossFade ? Math.max(1 - Math.abs(slideEl.progress), 0) : 1 + Math.min(Math.max(slideEl.progress, -1), 0);
+                    const targetEl = effect_target_effectTarget(params, slideEl);
+                    targetEl.style.opacity = slideOpacity;
+                    targetEl.style.transform = `translate3d(${tx}px, ${ty}px, 0px)`;
+                }
+            };
+            const setTransition = duration => {
+                const transformElements = swiper.slides.map((slideEl => utils_getSlideTransformEl(slideEl)));
+                transformElements.forEach((el => {
+                    el.style.transitionDuration = `${duration}ms`;
+                }));
+                effect_virtual_transition_end_effectVirtualTransitionEnd({
+                    swiper,
+                    duration,
+                    transformElements,
+                    allSlides: true
+                });
+            };
+            effect_init_effectInit({
+                effect: "fade",
+                swiper,
+                on,
+                setTranslate,
+                setTransition,
+                overwriteParams: () => ({
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    watchSlidesProgress: true,
+                    spaceBetween: 0,
+                    virtualTranslate: !swiper.params.cssMode
+                })
+            });
+        }
         function create_shadow_createShadow(suffix, slideEl, side) {
             const shadowClass = `swiper-slide-shadow${side ? `-${side}` : ""}${suffix ? ` swiper-slide-shadow-${suffix}` : ""}`;
             const shadowContainer = utils_getSlideTransformEl(slideEl);
@@ -7113,46 +7372,6 @@
                 shadowContainer.append(shadowEl);
             }
             return shadowEl;
-        }
-        function effect_init_effectInit(params) {
-            const {effect, swiper, on, setTranslate, setTransition, overwriteParams, perspective, recreateShadows, getEffectParams} = params;
-            on("beforeInit", (() => {
-                if (swiper.params.effect !== effect) return;
-                swiper.classNames.push(`${swiper.params.containerModifierClass}${effect}`);
-                if (perspective && perspective()) swiper.classNames.push(`${swiper.params.containerModifierClass}3d`);
-                const overwriteParamsResult = overwriteParams ? overwriteParams() : {};
-                Object.assign(swiper.params, overwriteParamsResult);
-                Object.assign(swiper.originalParams, overwriteParamsResult);
-            }));
-            on("setTranslate", (() => {
-                if (swiper.params.effect !== effect) return;
-                setTranslate();
-            }));
-            on("setTransition", ((_s, duration) => {
-                if (swiper.params.effect !== effect) return;
-                setTransition(duration);
-            }));
-            on("transitionEnd", (() => {
-                if (swiper.params.effect !== effect) return;
-                if (recreateShadows) {
-                    if (!getEffectParams || !getEffectParams().slideShadows) return;
-                    swiper.slides.forEach((slideEl => {
-                        slideEl.querySelectorAll(".swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left").forEach((shadowEl => shadowEl.remove()));
-                    }));
-                    recreateShadows();
-                }
-            }));
-            let requireUpdateOnVirtual;
-            on("virtualUpdate", (() => {
-                if (swiper.params.effect !== effect) return;
-                if (!swiper.slides.length) requireUpdateOnVirtual = true;
-                requestAnimationFrame((() => {
-                    if (requireUpdateOnVirtual && swiper.slides && swiper.slides.length) {
-                        setTranslate();
-                        requireUpdateOnVirtual = false;
-                    }
-                }));
-            }));
         }
         function EffectCards(_ref) {
             let {swiper, extendParams, on} = _ref;
@@ -7238,8 +7457,10 @@
             });
         }
         function initSliders() {
-            if (document.querySelector(".why__slider")) new swiper_core_Swiper(".why__slider", {
+            if (document.querySelector(".why__slider")) new Swiper(".why__slider", {
                 modules: [ Navigation, EffectCards, Pagination ],
+                observer: true,
+                observeParents: true,
                 speed: 500,
                 effect: "cards",
                 grabCursor: true,
@@ -7248,7 +7469,7 @@
                 perSlideRotate: 5,
                 rotate: true,
                 pagination: {
-                    el: ".swiper-pagination",
+                    el: ".why__pagination",
                     type: "custom",
                     renderCustom: function(swiper, current, total) {
                         var currentSlide = ("0" + current).slice(-2);
@@ -7259,8 +7480,27 @@
                 navigation: {
                     prevEl: ".why__slider-wrap .swiper-button-prev",
                     nextEl: ".why__slider-wrap .swiper-button-next"
+                }
+            });
+            if (document.querySelector(".testimonials__slider")) new Swiper(".testimonials__slider", {
+                modules: [ Navigation, EffectFade, Pagination ],
+                observer: true,
+                observeParents: true,
+                speed: 300,
+                effect: "fade",
+                pagination: {
+                    el: ".testimonials__pagination",
+                    type: "custom",
+                    renderCustom: function(swiper, current, total) {
+                        var currentSlide = ("0" + current).slice(-2);
+                        var totalSlides = ("0" + total).slice(-2);
+                        return '<span class="pagination-current">' + currentSlide + "</span> / " + '<span class="pagination-total">' + totalSlides + "</span>";
+                    }
                 },
-                on: {}
+                navigation: {
+                    prevEl: ".testimonials__slider .swiper-button-prev",
+                    nextEl: ".testimonials__slider .swiper-button-next"
+                }
             });
         }
         window.addEventListener("load", (function(e) {
@@ -7404,10 +7644,6 @@
         }
         const da = new DynamicAdapt("max");
         da.init();
-        var iconMenu = document.querySelector(".icon-menu");
-        if (iconMenu) iconMenu.addEventListener("click", (function() {
-            iconMenu.classList.toggle("_open-menu");
-        }));
         window["FLS"] = false;
         isWebp();
         addLoadedClass();

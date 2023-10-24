@@ -1,53 +1,110 @@
-//<FORM>
-// Сніппет (HTML):
-.form {
-	&__row {
+//<INPUT>
+// Сніппет (HTML): inp
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.input {
+	border-radius: 0 !important;
+	width: 100%;
+	display: block;
+	padding: 0 0 toRem(10) 0;
+	outline: none;
+
+	@include adaptiveValue("font-size", 28, 24);
+	font-weight: 700;
+	line-height: normal;
+	@include adaptiveValue("letter-spacing", -1.12, -0.48);
+	text-transform: uppercase;
+	border-bottom: toRem(1) solid rgba(0, 0, 0, 0.30);
+
+	&._form-focus {
 	}
-	&__column {
-	}
-	&__line {
-	}
-	&__input {
-	}
-	&__button {
-	}
-	&__error {
+	&._form-error {
 	}
 }
-//</FORM>
+.input[placeholder]:not([data-placeholder-nohiden]) {
+	&::placeholder {
+		transition: opacity 0.3s;
+		color: $gray87;
+	}
+	&:focus::placeholder {
+		opacity: 0;
+	}
+}
 
-// <BUTTONS>
-// Сніппет (HTML): btn
-// @import "button";
+textarea.input {
+	resize: none;
+	padding: 0px 0px;
+	@include adaptiveValue("min-height", 182, 127);
+}
 
-// <INPUTS>
-// Сніппет (HTML): inp
-// @import "input";
+.item-form {
+	@include adaptiveValue("padding-left", 158, 118,0,1920,1440);
+	@include adaptiveValue("padding-left", 118, 40,3,1440,768);
+	@media (max-width: em(750.98)){
+		  padding-left: 0 !important;
+	}
+	// .item-form__form
+	&__form {
+	}
+	// .item-form__wrapper
+	&__wrapper {
+		position: relative;
+		&:not(:last-child) {
+			margin-bottom: toRem(20);
+		}
+	}
+	// .item-form__input
+	&__input {
+	}
+	// .item-form__textarea
+	&__textarea {
+	}
+	// .item-form__btn
+	&__btn {
+		@include adaptiveValue("margin-top", 20, 0);
+		@include adaptiveValue("height", 172, 129,0,1920,1440);
+		@include adaptiveValue("height", 129, 67,3,1440,375);
 
-// <CHECK>
-// Сніппет (HTML): chk
-// @import "checkbox";
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
 
-// <RADIO>
-// Сніппет (HTML): opt
-// @import "radio";
+		border-radius: 100px;
+		background-color: $accent;
 
-// <SELECT>
-// Сніппет (HTML): sel
-// @import "select";
+		color: white;
+		@include adaptiveValue("font-size", 72, 54,0,1920,1440);
+		@include adaptiveValue("font-size", 54, 24,3,1440,375);
+		line-height: normal;
+		text-transform: uppercase;
 
-// <RATING>
-// Сніппет (HTML): rating
-// @import "rating";
+		transition: all .3s ease;
+		@media (any-hover: hover){
+			&:hover{
+				background-color: $accent2;
+				color: $mainColor;
+			}
+		}
+	}
+}
 
-// <QUANTITY>
-// Сніппет (HTML): qa
-// @import "quantity";
+.form__error {
+	position: absolute;
+	top: 0;
+	right: 0;
 
-// <RANGE>
-// Сніппет (HTML):
-// @import "range";
+	color:$accent;
+	@include adaptiveValue("font-size", 28, 24);
+	line-height: normal;
+	@include adaptiveValue("letter-spacing", -1.12, -0.48);
+	text-transform: uppercase;
+	transition: opacity 0.3s;
+}
 
-// <CALENDAR>
-// Сніппет (HTML):
-// @import "datepicker";
