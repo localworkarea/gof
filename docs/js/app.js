@@ -7644,6 +7644,22 @@
         }
         const da = new DynamicAdapt("max");
         da.init();
+        const footer = document.querySelector(".footer");
+        const html = document.documentElement;
+        if (footer) {
+            const options = {
+                root: null,
+                rootMargin: "0px",
+                threshold: .5
+            };
+            function handleIntersection(entries, observer) {
+                entries.forEach((entry => {
+                    if (entry.isIntersecting) html.classList.add("_footer-show"); else html.classList.remove("_footer-show");
+                }));
+            }
+            const observer = new IntersectionObserver(handleIntersection, options);
+            observer.observe(footer);
+        }
         window["FLS"] = false;
         isWebp();
         addLoadedClass();

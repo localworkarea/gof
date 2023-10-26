@@ -673,6 +673,8 @@
   &__txt {
     font-family: "Manrope";
     font-size: toRem(16);
+    @include adaptiveValue("font-size", 16,14,0,1920,1440);
+    @include adaptiveValue("font-size", 14, 16,3,993,992);
     font-weight: 500;
     line-height: 1.1;
   }
@@ -824,6 +826,7 @@
     background: rgba(244, 244, 244, 0.30);
     padding-top: toRem(37);
     @include adaptiveValue("padding-bottom", 150, 112,0,1920,1440);
+    @include adaptiveValue("padding-bottom", 112, 35,3,481,480);
     @media (max-width: em(1440.98)) and (min-width: em(670.98)) {
       display: flex;
       flex-direction: column;
@@ -965,6 +968,9 @@
     @include adaptiveValue("font-size", 18, 16);
     line-height: .9;
     @include adaptiveValue("margin-bottom", 30, 15);
+    @media (max-width:$mobileXS){
+       max-width: toRem(115); 
+    }
   }
   // .item-packages__list
   &__list {
