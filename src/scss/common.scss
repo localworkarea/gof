@@ -184,3 +184,33 @@
     transform: translate(calc(-50% - 30px));
   }
 }
+
+
+.btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s ease;
+  // .btn_01
+  &_01 {
+    background-color: $accent;
+    color: white;
+    @media (any-hover: hover){
+      &:hover{
+        background-color: $accent2;
+        color: $mainColor;
+      }
+    }
+  }
+  // .btn_02
+  &_02 {
+    background-color: $accent4;
+    color: white;
+    @media (any-hover: hover){
+      &:hover{
+        background-color: $accent;
+      }
+    }
+  }
+}
