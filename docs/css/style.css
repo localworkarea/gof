@@ -2761,19 +2761,6 @@ body::after {
             column-gap: 3.125rem;
   }
 
-  .about-hero__main {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
   .about-hero__image {
     height: 100%;
     padding-bottom: 100%;
@@ -3844,7 +3831,7 @@ body::after {
   }
 
   .about-hero__title:not(:last-child) {
-    margin-bottom: 5rem;
+    margin-bottom: 18.75rem;
   }
 
   .title-about__txt-s {
@@ -4300,7 +4287,7 @@ body::after {
   }
 
   .about-hero__title:not(:last-child) {
-    margin-bottom: 3.75rem;
+    margin-bottom: 10.625rem;
   }
 
   .title-about__txt-s {
@@ -8541,15 +8528,15 @@ body::after {
     }
 }
 
-@supports (margin-bottom: clamp( 3.75rem , 0.0000000625rem  +  4.1666666667vw , 5rem )) {
+@supports (margin-bottom: clamp( 10.625rem , -13.75rem  +  27.0833333333vw , 18.75rem )) {
     .about-hero__title:not(:last-child) {
-      margin-bottom: clamp( 3.75rem , 0.0000000625rem  +  4.1666666667vw , 5rem );
+      margin-bottom: clamp( 10.625rem , -13.75rem  +  27.0833333333vw , 18.75rem );
     }
 }
 
-@supports not (margin-bottom: clamp( 3.75rem , 0.0000000625rem  +  4.1666666667vw , 5rem )) {
+@supports not (margin-bottom: clamp( 10.625rem , -13.75rem  +  27.0833333333vw , 18.75rem )) {
     .about-hero__title:not(:last-child) {
-      margin-bottom: calc(3.75rem + 1.25 * (100vw - 90rem) / 30);
+      margin-bottom: calc(10.625rem + 8.125 * (100vw - 90rem) / 30);
     }
 }
 

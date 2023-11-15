@@ -1640,16 +1640,16 @@
   &__main {
     @include adaptiveValue("padding-top", 68, 50,0,1920,1440);
     @include adaptiveValue("padding-top", 50, 0,3,1440,1024);
-    @media (min-width:$mobile){
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    // @media (min-width:$mobile){
+    //   display: flex;
+    //   flex-direction: column;
+    //   justify-content: center;
+    // }
   }
   // .about-hero__title
   &__title {
     &:not(:last-child) {
-      @include adaptiveValue("margin-bottom", 80, 60,0,1920,1440);
+      @include adaptiveValue("margin-bottom", 300, 170,0,1920,1440);
       @media (max-width:$mobile){
          margin-bottom: unset !important; 
       }
