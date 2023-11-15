@@ -1640,6 +1640,11 @@
   &__main {
     @include adaptiveValue("padding-top", 68, 50,0,1920,1440);
     @include adaptiveValue("padding-top", 50, 0,3,1440,1024);
+    @media (min-width:$mobile){
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
   // .about-hero__title
   &__title {
@@ -1725,17 +1730,17 @@
   // .about-project__container
   &__container {
   }
-  // .about-project__head
-  &__head {
-    @include adaptiveValue("margin-bottom", 120, 90,0,1920,1440);
-    @include adaptiveValue("margin-bottom", 90, 40,3,1440,375);
-  }
-  // .about-project__title
-  &__title {
-    text-align: center;
-    @include adaptiveValue("max-width", 1480, 1100,0,1920,1440);
-    margin: 0 auto;
-  }
+  // // .about-project__head
+  // &__head {
+  //   @include adaptiveValue("margin-bottom", 120, 90,0,1920,1440);
+  //   @include adaptiveValue("margin-bottom", 90, 40,3,1440,375);
+  // }
+  // // .about-project__title
+  // &__title {
+  //   text-align: center;
+  //   @include adaptiveValue("max-width", 1480, 1100,0,1920,1440);
+  //   margin: 0 auto;
+  // }
   // .about-project__title-s
   &__title-s {
     display: inline-block;
@@ -1826,16 +1831,23 @@
   }
   // .item-project__main
   &__main {
-    @media (min-width:em(1300.98)){
-      margin: auto 0;
-    }
-    @media (max-width: em(1300.98)) and (min-width: em(650.98)){
+    @media (min-width: em(650.98)){
       margin: toRem(20) 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     @media (max-width: em(650.98)){
       margin-bottom: toRem(40);
     }
   }
+	// .item-project__title-main
+	&__title-main {
+    @include adaptiveValue("font-size", 36, 24);
+    &:not(:last-child) {
+      margin-bottom: toRem(15);
+    }
+	}
   // .item-project__txt
   &__txt {
     color: $gray87;
@@ -1922,7 +1934,20 @@
     color: white;
     text-align: center;
     @include adaptiveValue("max-width", 1320, 990,0,1920,1440);
+    // text-transform: inherit;
   }
+	// .about-goal__after
+	&__after {
+    @include adaptiveValue("margin-top", 100, 40);
+	}
+	// .about-goal__txt
+	&__txt {
+    text-align: center;
+    @include adaptiveValue("font-size", 84, 63,0,1920,1440);
+    @include adaptiveValue("font-size", 63, 48,3,1440,375);
+    @include adaptiveValue("letter-spacing", -3.36, -1.92);
+    text-transform: uppercase;
+	}
 }
 
 // == ABOUT-SOCIAL ===========================================
